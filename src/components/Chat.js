@@ -7,13 +7,10 @@ import { Message } from "./Message";
 export const Chat = () => {
   const [messages, setMessages] = useState([]);
 
-  const getFormData = (messages) => {
+  const getFormData = (messages, files) => {
     const formData = new FormData();
-
     files?.forEach((file, index) => {
       formData.append(`files[${index}]`, file.file);
-      formData.append(`files[${index}].name`, file.file.name);
-      formData.append(`files[${index}].type`, file.file.type);
     });
     formData.append("messages", JSON.stringify(messages));
     return formData;

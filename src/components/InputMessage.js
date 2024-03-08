@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IconUpload } from "./IconUpload";
-import { useUploadFile } from "@/app/hooks/useUploadFile";
+import { useUploadFile } from "@/hooks/useUploadFile";
 import { Files } from "./Files";
 
 const InputMessage = ({ sendMessage }) => {
@@ -22,7 +22,7 @@ const InputMessage = ({ sendMessage }) => {
       resetFiles();
     }
   };
-  // console.log(selectedFiles, "selectedFiles");
+
   const handleKeyDown = (event) => {
     // Check if Enter key is pressed without the Shift key
     if (event.key === "Enter" && !event.shiftKey) {

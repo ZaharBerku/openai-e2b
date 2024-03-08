@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import * as dotenv from "dotenv";
 import OpenAI from "openai";
-import { env } from "../../config/env";
+import { env } from "../../../config/env";
 
 dotenv.config();
 
@@ -11,8 +11,9 @@ const openai = new OpenAI({
 
 export async function POST(req) {
   try {
-    const body = await req.json();
-    const messages = body.messages;
+    const data = await req.formData();
+    const body = Object.fromEntries(data);
+    const messages = JSON.parse(body.messages);
     const completion = await openai.chat.completions.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
