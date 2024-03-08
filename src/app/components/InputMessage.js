@@ -41,27 +41,31 @@ const InputMessage = ({ sendMessage }) => {
 
   return (
     <div className="w-full p-4">
-      <div className="bg-slate-500 overflow-hidden flex flex-col box-border text-white rounded-lg">
-        {Boolean(selectedFiles.length) && (
-          <Files deleteFile={deleteFile} files={selectedFiles} />
-        )}
-        <div className="flex items-center">
-          <label className="p-2 bg-slate-500 relative flex justify-center items-center cursor-pointer">
-            <IconUpload />
-            <input
-              onChange={handleFilesChange}
-              multiple
-              type="file"
-              className="w-0 h-0 absolute"
+      <div className="bg-slate-500 flex overflow-hidden box-border text-white rounded-lg">
+        <div className="flex flex-col flex-1">
+          {Boolean(selectedFiles.length) && (
+            <Files deleteFile={deleteFile} files={selectedFiles} />
+          )}
+          <div className="flex items-center">
+            <label className="p-2 bg-slate-500 relative flex justify-center items-center cursor-pointer">
+              <IconUpload />
+              <input
+                onChange={handleFilesChange}
+                multiple
+                type="file"
+                className="w-0 h-0 absolute"
+              />
+            </label>
+            <textarea
+              value={message}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              ref={textarea}
+              className="w-full max-h-8 flex items-center py-1 resize-none bg-transparent outline-none border-none"
             />
-          </label>
-          <textarea
-            value={message}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            ref={textarea}
-            className="w-full max-h-8 flex items-center py-1 resize-none bg-transparent outline-none border-none"
-          />
+          </div>
+        </div>
+        <div>
           <button
             onClick={handleSendMessage}
             className="bg-blue-600 text-sm p-3 box-border w-32 h-full text-white"
