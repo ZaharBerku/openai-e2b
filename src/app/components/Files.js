@@ -24,7 +24,7 @@ const File = ({ file, id, deleteFile }) => {
       <ButtonDelete handleClick={handleDlete} />
       {isImage ? (
         <div className="relative w-14 h-14 rounded-md">
-          <Image src={url} alt={"preview"} fill objectFit="cover" />
+          <Image src={url} alt={"preview"} fill className="object-fill" />
         </div>
       ) : (
         <div className="p-2 rounded-md border border-white">
